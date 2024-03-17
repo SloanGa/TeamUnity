@@ -8,7 +8,7 @@ router.use("/classement", ranking);
 router.use("/equipes", teams);
 
 router.get("/", (req, res) => {
-  res.render("index.html");
+  res.render("home");
 });
 
 module.exports = router;

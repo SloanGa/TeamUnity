@@ -8,8 +8,8 @@ const port = process.env.PORT || 5000;
 exports.app = app;
 
 app.set("views", path.join(__dirname, "views"));
-app.engine("html", require("ejs").renderFile);
-// app.set("view engine", "ejs");
+// app.engine("html", require("ejs").renderFile);
+app.set("view engine", "pug");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(morgan("short"));

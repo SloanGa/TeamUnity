@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* #inputtext{
+    display: flex;
+} */
+
+#input{
+    height: 100px;
+    width: 50%;
+    border: 0.5px solid black
+}

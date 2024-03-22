@@ -1,11 +1,23 @@
-div(class=" routes bg-[#62B5E5] text-slate-50 font-bold h-16 flex items-center justify-between mb-5 rounded-lg m-1")
-    ul(class="flex") 
-        li(class="w-56 text-center")
-            a(href="/classement") Classement 
-        li(class="w-56 text-center") 
-            a(href="/equipes") Equipes 
-        li(class="w-56 text-center")
-            a(href="/equipes") Profil 
-    div(class="mr-12")
-        button(class="w-28 text-center border-solid border-slate-500 rounded-full bg-[#001489] py-0.5 mr-4 hover:text-[#001489] hover:bg-slate-50 duration-500") Connexion
-        button(class="w-28 text-center border-solid border-slate-500 rounded-full bg-[#001489] py-0.5 hover:text-[#001489] hover:bg-slate-50 duration-500") Inscription
+nav.bg-white.fixed.w-full.z-20.top-0.start-0.border-b.border-gray-200.font-nav1.pb-4(class='text-xs')
+      .max-w-screen-xl.flex.flex-wrap.items-center.justify-between.mx-auto.pt-4.pr-4.pl-4
+        a.flex.items-center.space-x-3(href='/', class='rtl:space-x-reverse')
+          img.h-12.rounded-full(src='/img/logo2.jpg', alt='Logo')
+          span(class="lg:text-base text-[#0B1B32]" id="logoname") TeamUnity
+          
+        .flex.space-x-3(class='lg:order-2 lg:space-x-0 rtl:space-x-reverse xl:text-sm sd:text-xs')
+          a(href="/users/signin",class='text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] mr-2') Inscription
+          a(href="/users/login",class='text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85]') Connexion
+          
+          
+            
+        #navbar-sticky.items-center.justify-between.w-full(class='lg:flex lg:w-auto lg:order-1')
+          ul.flex.flex-col.font-medium.mt-2(class='md:p-0 lg:space-x-8 rtl:space-x-reverse lg:flex-row md:mt-0 lg:text-sm')
+            li(class='flex-1 group w-52 m-auto')
+              a.block.py-2.px-3.text-gray-500.bg-white.rounded.text-center(href='/classement') Classement
+              span(class="block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
+            li(class='flex-1 group w-52 m-auto')
+              a.block.py-2.px-3.text-gray-500.rounded.text-center(href='/equipes') Equipes
+              span(class="block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
+            li(class='flex-1 group w-52 m-auto')
+              a.block.py-2.px-3.text-gray-500.rounded.text-center(href='/profil') Profil
+              span(class="block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 

@@ -1,4 +1,3 @@
 exports.showRanking = (req, res, next) => {
-  res.end();
-  console.log(e);
+  res.render("ranking");
 };

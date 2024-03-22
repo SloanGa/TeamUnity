@@ -2,9 +2,15 @@
 module.exports = {
   content: ["./views/layout.pug"],
   theme: {
+    fontFamily: {
+      nav: ["Assistant", "sans-serif"],
+      nav1: ["Poppins", "sans-serif"],
+      body: ["Arapey", "serif"],
+    },
     extend: {
       colors: {
-        "blue-action": "#62b5e5",
+        firstblue: "#62b5e5",
+        secondblue: "#001489",
       },
     },
   },

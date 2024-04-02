@@ -7,6 +7,7 @@ const userRoutes = require("./user.routes");
 const authRoutes = require("./auth.routes");
 const postRoutes = require("./post.routes");
 const { getPosts } = require("../queries/post.queries");
+const { isAdmin } = require("../security/isAdmin");
 require("../database/index");
 
 router.use("/classement", ranking);
@@ -19,8 +20,11 @@ router.use("/post", postRoutes);
 router.get("/", async (req, res) => {
   try {
     const posts = await getPosts();
-    res.render("home", { posts: posts, user: req.user });
-  } catch (e) {}
+    const admin = isAdmin(req);
+    res.render("home", { posts: posts, user: req.user, admin: admin });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 module.exports = router;

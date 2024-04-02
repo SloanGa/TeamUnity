@@ -14,18 +14,11 @@ block content
       .mb-5
         label.block.mb-2.text-sm.text-gray-900(for='team') Votre équipe
         select#team.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="team" required="")
-          option(selected='') Choissisez votre équipe
-          option(value='4021') Team 4021
-          option(value='4028') Team 4028
-          option(value='4038') Team 4038
-          option(value='4053') Team 4053
-          option(value='4086') Team 4086
-          option(value='4491') Team 4491
-          option(value='4499') Team 4499
-          option(value='4533') Team 4533
-          option(value='4537') Team 4537
-          option(value="4653") Team 4653
-          option(value='4822') Team 4822
+          option(selected='' value="No team") Choissisez votre équipe
+          
+          if teams
+            each team in teams 
+              option(value=team.id) #{team.teamname} 
           
       button.rounded-lg.text-sm.px-5(type='submit', class='text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] xl:text-sm sd:text-xs') Crée un compte
       

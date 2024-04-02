@@ -1,16 +1,23 @@
+const Team = require("../database/models/teams.model");
 const User = require("../database/models/users.model");
+const { findOneTeam } = require("./team.queries");
 
 exports.createUser = async (body) => {
   try {
     const hashedPassword = await User.hashPassword(body.password);
-    console.log(hashedPassword);
+    const teamId = body.team;
+    const team = await findOneTeam(teamId);
+    const teamName = team.teamname;
 
     const user = new User({
       username: body.username,
-      team: body.team,
       local: {
         email: body.email,
         password: hashedPassword,
+      },
+      team: {
+        team_id: teamId,
+        teamname: teamName,
       },
     });
     return user.save();

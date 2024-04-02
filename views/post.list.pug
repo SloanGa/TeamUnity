@@ -1,0 +1,28 @@
+if user
+    h1(class='w-8/12 m-auto font-nav1 mb-8 mt-10 text-center text-gray-700 font-bold xl:text-xl sm:text-base text-base') Fil d'actualité : 
+else 
+    h1(class='w-8/12 m-auto font-nav1 mb-8 mt-36 w-full text-center text-gray-700 font-bold text-2xl xl:text-xl sm:text-base text-base' id="toptext") Fil d'actualité : 
+if posts
+    each post in posts
+        div.px-8.py-6.bg-white.border.border-gray-200.rounded-lg.shadow(class='w-6/12 m-auto font-nav1 mb-4')
+            div.flex.justify-between.font-nav1
+                div
+                    h5.font-bold.tracking-tight.text-gray-700.mb-2(class="xl:text-xl sm:text-base") #{post.username} - #{post.team}
+                    img(src=`${post.avatar}`, alt="avatar" class='h-10')
+                div
+                    a(href="#" id="edit" class=" text-gray-600 fa-solid fa-pen-to-square mr-4")
+                    a(href="/post/"+post._id id="delete" class=" text-red-500 fa-solid fa-trash")
+            
+            div.mb-4.font-nav1(class="grid justify-items-end")
+                p(class="xl:text-base sm:text-sm text-gray-700")=post.date
+                span(class="xl:text-sm sm:text-xs text-gray-400")=post.hour
+            p.mb-3.font-normal.text-gray-600.text-justify.text-center(class="xl:text-base sm:text-sm")=post.message
+            | 
+        
+
+
+
+
+        //- div(class="flex items-center align-content")
+        //-     h1(class="text-red-500")= post.username
+        //-     h1(class="text-red-500")= post.message

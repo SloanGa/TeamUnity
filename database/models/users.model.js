@@ -4,10 +4,16 @@ const schema = mongoose.Schema;
 
 const userSchema = schema({
   username: { type: String, required: true },
-  team: { type: String, required: true },
+  captain: { type: Boolean, default: false },
+  admin: { type: Boolean, default: false },
   local: {
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+  },
+  avatar: { type: String, default: "/img/avatar.png" },
+  team: {
+    team_id: { type: String, required: true },
+    teamname: { type: String, required: true },
   },
 });
 

@@ -4,20 +4,24 @@ nav.bg-white.fixed.w-full.z-20.top-0.start-0.border-b.border-gray-200.font-nav1.
           img.h-12.rounded-full(src='/img/logo2.jpg', alt='Logo')
           span(class="lg:text-base text-[#0B1B32]" id="logoname") TeamUnity
           
-        .flex.space-x-3(class='lg:order-2 lg:space-x-0 rtl:space-x-reverse xl:text-sm sd:text-xs')
-          a(href="/users/signin",class='text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] mr-2') Inscription
-          a(href="/users/login",class='text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85]') Connexion
+        .flex.space-x-3(class='lg:order-2 lg:space-x-0 rtl:space-x-reverse')
+          if user
+           a(href="/auth/logout",class='xl:text-sm sd:text-xs text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85]') Deconnexion
           
+          else 
+            a(href="/users/signup",class=' xl:text-sm sd:text-xs text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] mr-2') Inscription
+            a(href="/auth/login",class=' xl:text-sm sd:text-xs text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85]') Connexion
+    
           
             
         #navbar-sticky.items-center.justify-between.w-full(class='lg:flex lg:w-auto lg:order-1')
-          ul.flex.flex-col.font-medium.mt-2(class='md:p-0 lg:space-x-8 rtl:space-x-reverse lg:flex-row md:mt-0 lg:text-sm')
+          ul.flex.flex-col.font-medium.mt-2(class='md:p-0 lg:space-x-8 rtl:space-x-reverse lg:flex-row md:mt-0 xl:text-base sm:text-sm')
             li(class='flex-1 group w-52 m-auto')
               a.block.py-2.px-3.text-gray-500.bg-white.rounded.text-center(href='/classement') Classement
-              span(class="block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
+              span(class=" block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
             li(class='flex-1 group w-52 m-auto')
               a.block.py-2.px-3.text-gray-500.rounded.text-center(href='/equipes') Equipes
-              span(class="block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
+              span(class=" block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
             li(class='flex-1 group w-52 m-auto')
               a.block.py-2.px-3.text-gray-500.rounded.text-center(href='/profil') Profil
-              span(class="block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 
+              span(class=" block w-7 mx-auto h-1 group-hover:bg-[#62b5e5] duration-300 rounded-full") 

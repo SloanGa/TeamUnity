@@ -1,3 +1,3 @@
 exports.showTeams = (req, res, next) => {
-  res.render("teams");
+  res.render("teams", { user: req.user });
 };

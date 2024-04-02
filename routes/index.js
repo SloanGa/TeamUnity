@@ -1,18 +1,26 @@
 const router = require("express").Router();
-const home = require("./home.routes");
+
 const ranking = require("./ranking.routes");
 const teams = require("./teams.routes");
 const profil = require("./profil.routes");
 const userRoutes = require("./user.routes");
+const authRoutes = require("./auth.routes");
+const postRoutes = require("./post.routes");
+const { getPosts } = require("../queries/post.queries");
+require("../database/index");
 
-router.use("/home", home);
 router.use("/classement", ranking);
 router.use("/equipes", teams);
 router.use("/profil", profil);
 router.use("/users", userRoutes);
+router.use("/auth", authRoutes);
+router.use("/post", postRoutes);
 
-router.get("/", (req, res) => {
-  res.redirect("/home");
+router.get("/", async (req, res) => {
+  try {
+    const posts = await getPosts();
+    res.render("home", { posts: posts, user: req.user });
+  } catch (e) {}
 });
 
 module.exports = router;

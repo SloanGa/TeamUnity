@@ -1,15 +1,32 @@
 extends layout.pug 
 
 block content
-    form(class="w-5/12 h-screen m-auto font-nav1 flex flex-col justify-center" action="" method="post" id='connectUser' )
+
+  if error
+    form(class="w-5/12 h-screen m-auto font-nav1 flex flex-col justify-center" action="/auth/login" method="post" id='connectUser' )
       .mb-5
         label.block.mb-2.text-sm.text-gray-900(for='email') Votre email
-        input#email.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='email', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5', placeholder='name@flowbite.com', required='')
+        input#email.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='email', class='focus:ring-[#62b5e5] border-red-600 focus:border-[#62b5e5] p-2.5', placeholder='name@flowbite.com', required='' name="email")
       .mb-5
        
         label.block.mb-2.text-sm.text-gray-900(for='password') Votre mot de passe
-        input#password.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='password', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5',placeholder="*********",required='')
+        input#password.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='password', class='focus:ring-[#62b5e5] border-red-600 focus:border-[#62b5e5] p-2.5',placeholder="*********",required='' name="password")
       .mb-5
-          
-      button.rounded-lg.text-sm.px-5(type='submit', class='text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] xl:text-sm sd:text-xs') Connexion
       
+        p(class="text-red-600 text-sm font-nav1")= error
+      
+      button.rounded-lg.text-sm.px-5(type='submit', class='text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] xl:text-sm sd:text-xs') Connexion
+  else 
+    form(class="w-5/12 h-screen m-auto font-nav1 flex flex-col justify-center" action="/auth/login" method="post" id='connectUser' )
+      .mb-5
+        label.block.mb-2.text-sm.text-gray-900(for='email') Votre email
+        input#email.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='email', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5', placeholder='name@flowbite.com', required='' name="email")
+      .mb-5
+       
+        label.block.mb-2.text-sm.text-gray-900(for='password') Votre mot de passe
+        input#password.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='password', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5',placeholder="*********",required='' name="password")
+      .mb-5
+      
+        p(class="text-red-700 text-sm font-nav1")= error
+      
+      button.rounded-lg.text-sm.px-5(type='submit', class='text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] xl:text-sm sd:text-xs') Connexion

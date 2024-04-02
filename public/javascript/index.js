@@ -1,7 +1,7 @@
-// window.addEventListener("DOMContentLoaded", () => {
-//   const login = document.getElementById("login");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const crossDelete = document.getElementById("delete");
 
-//   login.addEventListener("click", () => {
-//     axios.get("http://localhost:5000/login");
+//   crossDelete.addEventListener("click", (e) => {
+//     console.log(e.target);
 //   });
 // });

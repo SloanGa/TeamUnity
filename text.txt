@@ -1,0 +1,5 @@
+au get verification :
+
+User.avatar === Post.avatar ?
+
+Si non Query pour update Post.avatar par la valeur de User.avatar

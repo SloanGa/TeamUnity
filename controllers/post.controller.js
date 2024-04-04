@@ -1,5 +1,6 @@
 const Post = require("../database/models/post.model");
-const { getPosts, deletePost } = require("../queries/post.queries");
+const { getPosts, deletePost, editPost } = require("../queries/post.queries");
+const { findAvatars } = require("../queries/user.queries");
 
 exports.postCreate = async (req, res, next) => {
   try {
@@ -16,14 +17,6 @@ exports.postCreate = async (req, res, next) => {
     console.log(e);
   }
 };
-
-// exports.postEdit = async (req,res,next)=>{
-//   try{
-
-//   }catch(e){
-//     next(e)
-//   }
-// }
 
 exports.postDelete = async (req, res, next) => {
   try {

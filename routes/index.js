@@ -8,6 +8,10 @@ const authRoutes = require("./auth.routes");
 const postRoutes = require("./post.routes");
 const { getPosts } = require("../queries/post.queries");
 const { isAdmin } = require("../security/isAdmin");
+const upload = require("../routes/files.routes");
+const User = require("../database/models/users.model");
+const Post = require("../database/models/post.model");
+const { postEdit } = require("../controllers/post.controller");
 require("../database/index");
 
 router.use("/classement", ranking);
@@ -16,6 +20,7 @@ router.use("/profil", profil);
 router.use("/users", userRoutes);
 router.use("/auth", authRoutes);
 router.use("/post", postRoutes);
+router.use("/upload", upload);
 
 router.get("/", async (req, res) => {
   try {

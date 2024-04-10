@@ -5,7 +5,7 @@ nav.bg-white.fixed.w-full.z-20.top-0.start-0.border-b.border-gray-200.font-nav1.
           span(class="lg:text-base text-[#0B1B32]" id="logoname") TeamUnity
           
         .flex.space-x-3(class='lg:order-2 lg:space-x-0 rtl:space-x-reverse')
-          if user
+          if userSession
            a(href="/auth/logout",class='xl:text-sm sd:text-xs text-white font-medium rounded-lg px-4 py-2 text-center m-auto bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85]') Deconnexion
           
           else 

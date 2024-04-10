@@ -5,6 +5,17 @@
    #toptext{
       margin-top: 220px;
    }
+   #profil{
+      margin-top: 220px;
+   }
+
+   #topTitle{
+      margin-top: 220px;
+   }
+
+   #createUser{
+      margin-top: 80px;
+   }
   }
 
   @media only screen and (max-width: 350px) {

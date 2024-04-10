@@ -1,3 +1,3 @@
 exports.showRanking = (req, res, next) => {
-  res.render("ranking", { user: req.user });
+  res.render("ranking", { userSession: req.user });
 };

@@ -26,7 +26,8 @@ router.get("/", async (req, res) => {
   try {
     const posts = await getPosts();
     const admin = isAdmin(req);
-    res.render("home", { posts: posts, user: req.user, admin: admin });
+    const image = req.file ? req.file.originalname : null;
+    res.render("home", { posts: posts, userSession: req.user, admin: admin, image: image});
   } catch (e) {
     console.log(e);
   }

@@ -15,7 +15,11 @@ exports.sessionCreate = (req, res, next) => {
         if (err) {
           next(e);
         } else {
-          res.redirect("/");
+          if (req.originalUrl === "/auth/login/profil") {
+            res.redirect("/profil");
+          } else {
+            res.redirect("/");
+          }
         }
       });
     }

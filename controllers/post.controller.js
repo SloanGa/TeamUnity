@@ -2,6 +2,24 @@ const Post = require("../database/models/post.model");
 const { getPosts, deletePost, editPost } = require("../queries/post.queries");
 const { findAvatars } = require("../queries/user.queries");
 
+const dateParser = () => {
+  let newDate = new Date().toLocaleDateString("fr-FR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  return newDate;
+};
+
+const hourParser = (str) => {
+  let newHour = new Date().toLocaleTimeString("fr-FR", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false, // Utilise le format 24 heures
+  });
+  return newHour;
+};
+
 exports.postCreate = async (req, res, next) => {
   try {
     const body = req.body;
@@ -10,6 +28,8 @@ exports.postCreate = async (req, res, next) => {
       team: req.user.team.teamname,
       message: body.message,
       avatar: req.user.avatar,
+      date: dateParser(),
+      hour: hourParser(),
     });
     post.save();
     res.redirect("/");

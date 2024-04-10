@@ -1,3 +1,30 @@
 extends layout.pug 
 
 block content
+    script(src="/javascript/upload.avatar.js")
+    div(class='mt-48 w-6/12 m-auto font-nav1' id="profil").bg-gray-300.border.border-gray-200.rounded-lg.shadow
+        
+        .flex.flex-col.items-center.py-5
+            form(action="/upload/avatar", method="post" id="formAvatar", enctype="multipart/form-data")
+                input(type="file" name ="avatar" class="hidden" id="uploadFile") 
+                img.w-24.h-24.mb-3.rounded-full.shadow-lg(src=`${userSession.avatar}`, alt=`${userSession.username} avatar`)
+            h5.mb-1.text-xl.font-medium.text-gray-900=userSession.username
+            span.text-sm.text-white=userSession.team.teamname
+
+
+        .flex.flex-col.items-center.px-4.text-center
+                
+            #dropdown.z-10.hidden.text-base.list-none.bg-white.divide-y.divide-gray-100.rounded-lg.shadow
+            ul
+                li
+                a.block.px-4.py-2.text-sm.text-gray-700(href='#', class='hover:bg-gray-100') Edit
+                li
+                a.block.px-4.py-2.text-sm.text-red-600(href='#', class='hover:bg-gray-100') Delete 
+            a(href="#" class=' mb-2 -4 py-2 text-sm text-gray-700 hover:bg-gray-100') Ajouter le score du match    
+
+            
+                        
+            
+            //- .flex.mt-4(class='md:mt-6')
+            //- a.inline-flex.items-center.px-4.py-2.text-sm.font-medium.text-center.text-white.bg-blue-700.rounded-lg(href='#', class='hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800') Add friend
+            //- a.py-2.px-4.ms-2.text-sm.font-medium.text-gray-900.bg-white.rounded-lg.border.border-gray-200(href='#', class='focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700') Message

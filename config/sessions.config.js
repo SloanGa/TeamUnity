@@ -12,12 +12,12 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      maxAge: 60 * 60 * 24 * 14 * 1000,
+      maxAge: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
     },
     store: MongoStore.create({
       mongoUrl: process.env.SESSION_SERVE,
       dbName: process.env.DB_NAME,
-      ttl: 60 * 60 * 24 * 14 * 1000,
+      ttl: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
     }),
   })
 );

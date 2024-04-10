@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { upload } = require("../config/upload.config");
+const { changeAvatarProfil, uploadFile } = require("../controllers/files.controller");
 
-router.post("/imageform", upload.single("image"), (req, res, next) => {
-  console.log(req.file);
-  res.redirect("/");
-});
+router.post("/imageform", [uploadFile])
+
+router.post('/avatar', [changeAvatarProfil])
+
 module.exports = router;

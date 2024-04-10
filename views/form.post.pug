@@ -1,9 +1,9 @@
-if user
+if userSession
       form(action="/post" method="post" id='message' class="mt-28") 
         .mb-4.border.border-gray-300.rounded-lg.bg-gray-50(class="w-8/12 m-auto font-nav1")
           .px-4.py-2.bg-white.rounded-t-lg
             label.sr-only(for='message') Your comment
-            textarea#comment.px-0.text-base.text-gray-900.bg-white.border-0.resize-none.outline-none.w-full.min-h-35(class="focus:border-gray-500",rows='4',placeholder='Quoi de neuf ?', required='' name="message")
+            textarea#comment.px-0.text-base.text-gray-900.bg-white.border-0.resize-none.outline-none.w-full.min-h-35(class="focus:border-gray-500",rows='4',placeholder=`Quoi de neuf`, required='' name="message")
           .flex.items-center.justify-between.px-3.py-2.border-t
             button.inline-flex.items-center.px-4(type='submit',class='text-xs py-2.5 text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] mr-2')
               | Envoyer

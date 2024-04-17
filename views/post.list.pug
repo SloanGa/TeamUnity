@@ -11,8 +11,7 @@ if posts
                     img(src=`${post.avatar}`, alt="avatar" class='h-10 rounded-full')
                 if user && userSession.username === post.username || admin
                     div
-                        a(href="#" id="edit" class=" text-gray-600 fa-solid fa-pen-to-square mr-4") 
-                        a(href="/post/"+post._id id="delete" class=" text-red-500 fa-solid fa-trash")
+                    a(href="/post/"+post._id id="delete" class=" text-red-400 fa-solid fa-trash")
             
             div.mb-4.font-nav1(class="grid justify-items-end")
                 p(class="xl:text-base sm:text-sm text-gray-700")=post.date

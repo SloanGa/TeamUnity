@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./views/layout.pug"],
+  content: ["./views/**/*.pug"],
   theme: {
     fontFamily: {
       nav: ["Assistant", "sans-serif"],

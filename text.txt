@@ -4,3 +4,4 @@ User.avatar === Post.avatar ?
 
 Si non Query pour update Post.avatar par la valeur de User.avatar
 
+npx tailwindcss -i public/style/input.css -o public/style/output.css --watch 

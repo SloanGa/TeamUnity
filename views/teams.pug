@@ -5,11 +5,11 @@ block content
     div(class="grid grid-cols-2 lg:grid-cols-3 font-nav1 min-h-screen justify-items-center text-gray-700  w-10/12 m-auto")
             if teams
                 each team in teams
-                    div(class="bg-[#FF8200] opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
+                    div(class="bg-white opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
                         h2(class="text-center mt-2 text-base lg:text-xl mb-4")= team.teamname
                         div 
                             p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}             
-                            p(class="text-sm lg:text-lg mb-2 text-center") Joeurs :             
+                            p(class="text-sm lg:text-lg mb-2 text-center") Joueurs :             
                             ul(class="text-sm lg:text-lg mb-4 text-center") 
                                 each player in team.players
                                     li 

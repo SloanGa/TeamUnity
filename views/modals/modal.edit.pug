@@ -1,17 +1,17 @@
 div(class='mt-48 w-6/12 m-auto font-nav1 absolute top-0 left-40 right-40 h-96' id="modalEdit").bg-gray-300.border.border-gray-200.rounded-lg.shadow
-      form(action="/edit/profil", method="post", class="flex flex-col items-center py-5")
+      form(action="users/edit/profil", method="post", class="flex flex-col items-center py-5")
         
         label.block.mb-2.text-sm.text-gray-900(for='email') Votre email
-        input#email.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='email', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5', placeholder='name@flowbite.com',name="email" required="")
+        input#email.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='email', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5', placeholder='name@flowbite.com',name="email")
         .mb-5
         label.block.mb-2.text-sm.text-gray-900(for='username') Votre nom
-        input#userName.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5',placeholder="Jean",name="username" required="")
+        input#userName.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5',placeholder="Jean",name="username")
         .mb-5
         label.block.mb-2.text-sm.text-gray-900(for='password') Votre mot de passe
-        input#password.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='password', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5',placeholder="*********" name="password" required="")
+        input#password.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='password', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5',placeholder="*********" name="password")
         .mb-5
         label.block.mb-2.text-sm.text-gray-900(for='team') Votre équipe
-        select#team.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="team" required="")
+        select#team.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="team")
           option(selected='' value="No team") Choissisez votre équipe
           
             if teams
@@ -19,4 +19,4 @@ div(class='mt-48 w-6/12 m-auto font-nav1 absolute top-0 left-40 right-40 h-96' i
                 option(value=team.id) #{team.teamname} 
           
         button.rounded-lg.text-sm.px-5(type='submit', class='text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] xl:text-sm sd:text-xs') modifier
-        button(class="text-red-600" id="closeModalEdit") Fermer
+      button(class="text-red-600" id="closeModalEdit") Fermer

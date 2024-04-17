@@ -26,6 +26,14 @@ exports.createUser = async (body) => {
   }
 };
 
+exports.deleteUser = async (id) => {
+  return User.findByIdAndDelete(id);
+};
+
+exports.editUser = async (id, body) => {
+  return User.findByIdAndUpdate(id, body);
+};
+
 exports.findUserPerEmail = async (email) => {
   return User.findOne({ "local.email": email });
 };

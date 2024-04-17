@@ -11,7 +11,7 @@ exports.showProfil = async (req, res, next) => {
     const admin = isAdmin(req);
     res.render("profil", {
       userSession: req.user,
-      players: team.players,
+      // players: team.players,
       teams: teams,
       users: users,
       admin: admin,

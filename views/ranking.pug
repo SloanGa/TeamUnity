@@ -1,3 +1,35 @@
 extends layout.pug 
 
-block content
+block content 
+    .relative.shadow-md.mx-10.mt-36(class='sm:rounded-lg' id='ranking')
+        table.w-full.text-sm.text-gray-500
+            thead.text-xs.text-gray-700.uppercase.bg-gray-50
+                tr
+                    th.px-6.py-3(scope='col')
+                                | Equipes
+                    th.px-6.py-3(scope='col')
+                                | Match joués
+                    th.px-6.py-3(scope='col')
+                                | Victoires
+                    th.px-6.py-3(scope='col')
+                                | Nuls
+                    th.px-6.py-3(scope='col')
+                                | Defaites
+                    th.px-6.py-3(scope='col')
+                                | Points                                  
+            tbody
+                each team in teams 
+                    tr.border-b(class='odd:bg-white')
+                        th.px-6.py-4.font-medium.text-gray-700.whitespace-nowrap
+                            =team.teamname
+                            td.px-6.py-4.text-center
+                                =team.rank.playing   
+                            td.px-6.py-4.text-center
+                                =team.rank.won   
+                            td.px-6.py-4.text-center
+                                =team.rank.draw   
+                            td.px-6.py-4.text-center
+                                =team.rank.lost
+                            td.px-6.py-4.text-center
+                                =team.rank.points
+                        

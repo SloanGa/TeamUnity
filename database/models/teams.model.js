@@ -7,9 +7,9 @@ const teamSchema = schema({
   players: { type: Array },
   rank: {
     playing: { type: Number, default: 0 },
-    won: { type: Number, default: 0 },
-    draw: { type: Number, default: 0 },
-    lost: { type: Number, default: 0 },
+    wins: { type: Number, default: 0 },
+    draws: { type: Number, default: 0 },
+    looses: { type: Number, default: 0 },
     points: { type: Number, default: 0 },
   },
 });

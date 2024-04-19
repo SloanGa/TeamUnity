@@ -1,2 +1,29 @@
+div(id="modalAddScore")
+    div(class="flex flex-col justify-center items-center w-6/12 m-auto font-nav1")
+        span Ajouter le score d'un match
+        span Equipes
 
-          
+    form(class="" action="/equipes/scores" method="post" id='createScore')
+        div(class="flex justify-center items-center w-4/12 m-auto font-nav1") 
+            label.mb-2.text-sm.text-gray-900(for='team1')
+            select#team1.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="team1" required="")
+                each team in teams 
+                    option(value=team.id class="text-center") #{team.teamname}
+            span VS
+            label.mb-2.text-sm.text-gray-900(for='team2')
+            select#team2.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="team2" required="")
+                each team in teams 
+                    option(value=team.id  class="text-center") #{team.teamname}
+        
+        div(class="flex justify-center items-center w-5/12 m-auto font-nav1") 
+            label.mb-2.text-sm.text-gray-900(for='score1' class="w-4/6")
+            select#score1.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="score1" required="")
+                each num in Array.from({length: 11}, (_, i) => i)
+                    option(value=num  class="text-center") #{num}
+            span -
+            label.mb-2.text-sm.text-gray-900(for='score2')
+            select#score2.shadow-sm.bg-white.border.border-gray-300.text-gray-500.text-sm.rounded-lg.block.w-full.outline-none(type='text', class='focus:ring-[#62b5e5] focus:border-[#62b5e5] p-2.5' name="score2" required="")
+                each num in Array.from({length: 11}, (_, i) => i)
+                    option(value=num  class="text-center") #{num}
+        
+        button.rounded-lg.text-sm.px-5(type='submit', class='w-4/12 m-auto font-nav1 flex flex-col justify-center text-white font-medium rounded-lg px-4 py-2 text-center bg-[#62b5e5] transition-all focus:opacity-[0.85] shadow-md shadow-cyan-600/40 active:opacity-[0.85] xl:text-sm sd:text-xs') Ajouter un nouveau score

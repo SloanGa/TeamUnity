@@ -30,7 +30,6 @@ router.get("/", async (req, res) => {
       admin: admin,
       image: image,
     });
-    console.log(req.user.id);
   } catch (e) {
     console.log(e);
   }

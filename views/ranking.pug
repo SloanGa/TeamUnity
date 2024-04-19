@@ -6,30 +6,31 @@ block content
             thead.text-xs.text-gray-700.uppercase.bg-gray-50
                 tr
                     th.px-6.py-3(scope='col')
-                                | Equipes
+                        | Equipes
                     th.px-6.py-3(scope='col')
-                                | Match joués
+                        | Match joués
                     th.px-6.py-3(scope='col')
-                                | Victoires
+                        | Victoires
                     th.px-6.py-3(scope='col')
-                                | Nuls
+                        | Nuls
                     th.px-6.py-3(scope='col')
-                                | Defaites
+                        | Defaites
                     th.px-6.py-3(scope='col')
-                                | Points                                  
+                        | Points                                  
             tbody
-                each team in teams 
+                - teams.sort((a, b) => b.rank.points - a.rank.points).forEach((team) => {
                     tr.border-b(class='odd:bg-white')
                         th.px-6.py-4.font-medium.text-gray-700.whitespace-nowrap
                             =team.teamname
-                            td.px-6.py-4.text-center
-                                =team.rank.playing   
-                            td.px-6.py-4.text-center
-                                =team.rank.won   
-                            td.px-6.py-4.text-center
-                                =team.rank.draw   
-                            td.px-6.py-4.text-center
-                                =team.rank.lost
-                            td.px-6.py-4.text-center
-                                =team.rank.points
+                        td.px-6.py-4.text-center
+                            =team.rank.playing   
+                        td.px-6.py-4.text-center
+                            =team.rank.wins   
+                        td.px-6.py-4.text-center
+                            =team.rank.draws   
+                        td.px-6.py-4.text-center
+                            =team.rank.looses
+                        td.px-6.py-4.text-center
+                            =team.rank.points
+                - });
                         

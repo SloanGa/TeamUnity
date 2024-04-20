@@ -2,14 +2,14 @@ extends layout.pug
 
 block content
 
-    section(class="mt-28 splide" aria-label="Splid")
+    section(class="mt-48 splide" aria-label="Splid")
         
         div(class="splide__track")
             ul(class="splide__list")
                 each team in teams
                     li(class="splide__slide")
-                        div(class="bg-white opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
-                            h2(class="text-center mt-2 text-base lg:text-xl mb-4")= team.teamname
+                        div(class="bg-white opacity-80 border border-gray-200 mx-10 rounded-lg shadow hover:opacity-100 hover:shadow-lg")
+                            h2(class="mt-2 pl-4 text-base lg:text-xl mb-4")= team.teamname
                             p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}
                             p(class="text-sm lg:text-lg mb-4 text-center") Joueurs : 
                             ul(class="text-sm lg:text-lg mb-4 text-center") 
@@ -20,8 +20,21 @@ block content
     script.
       document.addEventListener('DOMContentLoaded', function() {
         const splide = new Splide('.splide',{
+            type : 'loop',
             snap : false,
-
+            width : '100%',
+            perPage : 2,
+            speed : 1000,
+            rewindbyDrag : true,
+            padding: { left: '10%', right: '10%' },
+            pauseOnFocus : true,
+            keyboard : "global",
+            
+            
+            
+            
+            
+            
         });
         splide.mount();
       });

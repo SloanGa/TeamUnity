@@ -1,21 +1,47 @@
 extends layout.pug 
 
 block content
-    h1(class = "mt-28 text-center font-nav1 text-center text-gray-700 font-bold xl:text-xl sm:text-base text-base" id="topTitle") Les Equipes 
-    div(class="grid grid-cols-2 lg:grid-cols-3 font-nav1 min-h-screen justify-items-center text-gray-700  w-10/12 m-auto")
-            if teams
+
+    section(class="mt-28 splide" aria-label="Splid")
+        
+        div(class="splide__track")
+            ul(class="splide__list")
                 each team in teams
-                    div(class="bg-white opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
-                        h2(class="text-center mt-2 text-base lg:text-xl mb-4")= team.teamname
-                        div 
-                            p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}             
-                            p(class="text-sm lg:text-lg mb-2 text-center") Joueurs :             
+                    li(class="splide__slide")
+                        div(class="bg-white opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
+                            h2(class="text-center mt-2 text-base lg:text-xl mb-4")= team.teamname
+                            p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}
+                            p(class="text-sm lg:text-lg mb-4 text-center") Joueurs : 
                             ul(class="text-sm lg:text-lg mb-4 text-center") 
                                 each player in team.players
-                                    li 
-                                    a(href="#" class=" text-sm lg:text-base")=player 
+                                    li= player
+                                
+    
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        const splide = new Splide('.splide',{
+            snap : false,
 
-                        div 
-                            h2(class="text-sm lg:text-lg mb-2 text-center") Derniers matchs :    
-                        //- p=team.captain
-                        //- p.team-members= team.players 
+        });
+        splide.mount();
+      });
+
+    //- h1(class = "mt-28 text-center font-nav1 text-center text-gray-700 font-bold xl:text-xl sm:text-base text-base" id="topTitle") Les Equipes 
+    //- div(class="grid grid-cols-2 lg:grid-cols-3 font-nav1 min-h-screen justify-items-center text-gray-700  w-10/12 m-auto")
+    //-         if teams
+    //-             each team in teams
+    //-                 div(class="bg-white opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
+    //-                     h2(class="text-center mt-2 text-base lg:text-xl mb-4")= team.teamname
+    //-                     div 
+    //-                         p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}             
+    //-                         p(class="text-sm lg:text-lg mb-2 text-center") Joueurs :             
+    //-                         ul(class="text-sm lg:text-lg mb-4 text-center") 
+    //-                             each player in team.players
+    //-                                 li 
+    //-                                 a(href="#" class=" text-sm lg:text-base")=player 
+
+    //-                     div 
+    //-                         h2(class="text-sm lg:text-lg mb-2 text-center") Derniers matchs :    
+    //-                     //- p=team.captain
+    //-                     //- p.team-members= team.players 
+    

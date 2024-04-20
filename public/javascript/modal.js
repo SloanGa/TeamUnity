@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const editProfil = document.getElementById("editProfil");
   const deleteProfil = document.getElementById("deleteProfil");
   const addScore = document.getElementById("addScore");
+  const modalAddScore = document.getElementById("modalAddScore");
   const modalEdit = document.getElementById("modalEdit");
   const modalDelete = document.getElementById("modalDelete");
   const closeModalEdit = document.getElementById("closeModalEdit");
@@ -10,10 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   editProfil.addEventListener("click", () => {
     modalEdit.style.display = "block";
+    modalDelete.style.display = "none";
+    modalAddScore.style.display = "none";
   });
 
   deleteProfil.addEventListener("click", () => {
     modalDelete.style.display = "block";
+    modalAddScore.style.display = "none";
+    modalEdit.style.display = "none";
+  });
+
+  addScore.addEventListener("click", () => {
+    modalAddScore.style.display = "block";
+    modalEdit.style.display = "none";
+    modalDelete.style.display = "none";
   });
 
   closeModalEdit.addEventListener("click", () => {

@@ -1,6 +1,6 @@
 
 
-#modalEdit, #modalDelete{
+#modalEdit, #modalDelete, #modalAddScore{
   display: none;
 }
 
@@ -22,6 +22,10 @@
 
   #createUser{
      margin-top: 80px;
+  }
+
+  #ranking{
+     margin-top: 220px;
   }
  }
 

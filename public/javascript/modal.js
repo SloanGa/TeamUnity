@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalDelete = document.getElementById("modalDelete");
   const closeModalEdit = document.getElementById("closeModalEdit");
   const closeModalDelete = document.getElementById("closeModalDelete");
+  const closeModalAddScore = document.getElementById("closeModalAddScore");
 
   editProfil.addEventListener("click", () => {
     modalEdit.style.display = "block";
@@ -33,5 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   closeModalDelete.addEventListener("click", () => {
     modalDelete.style.display = "none";
+  });
+
+  closeModalAddScore.addEventListener("click", () => {
+    modalAddScore.style.display = "none";
   });
 });

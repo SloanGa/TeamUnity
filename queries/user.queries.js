@@ -30,8 +30,17 @@ exports.deleteUser = async (id) => {
   return User.findByIdAndDelete(id);
 };
 
-exports.editUser = async (id, body) => {
-  return User.findByIdAndUpdate(id, body);
+exports.editUser = async (id, username, teamId, teamName, password) => {
+  try {
+    await User.findByIdAndUpdate(id, {
+      username: username,
+      "team.team_id": teamId,
+      "team.teamname": teamName,
+      "local.password": password,
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 exports.findUserPerEmail = async (email) => {

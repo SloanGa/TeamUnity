@@ -29,6 +29,7 @@ router.get("/", async (req, res) => {
       userSession: req.user,
       admin: admin,
       image: image,
+      currentPath: "/",
     });
   } catch (e) {
     console.log(e);

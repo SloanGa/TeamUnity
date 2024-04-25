@@ -2,33 +2,51 @@ extends layout.pug
 
 block content
 
-    section(class="mt-48 splide" aria-label="Splid")
+    
+    div(class=" mt-28 grid grid-cols-2 lg:grid-cols-3 font-nav1 min-h-screen justify-items-center text-gray-700  w-10/12 m-auto")
         
-        div(class="splide__track")
-            ul(class="splide__list")
-                each team in teams
-                    li(class="splide__slide")
-                        div(class="bg-white opacity-80 border border-gray-200 mx-10 rounded-lg shadow hover:opacity-100 hover:shadow-lg")
-                            h2(class="mt-2 pl-4 text-base lg:text-xl mb-4")= team.teamname
-                            p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}
-                            p(class="text-sm lg:text-lg mb-4 text-center") Joueurs : 
-                            ul(class="text-sm lg:text-lg mb-4 text-center") 
-                                each player in team.players
-                                    li= player
+        div(class="bg-white opacity-80 border border-gray-200 rounded-lg shadow w-1/2 m-10 hover:opacity-100 hover:shadow-lg")
+            h2(class="text-center mt-2 text-base lg:text-xl mb-4")= team.teamname
+            div 
+                p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}             
+                p(class="text-sm lg:text-lg mb-2 text-center") Joueurs :             
+                ul(class="text-sm lg:text-lg mb-4 text-center") 
+                    each player in team.players
+                        li 
+                        ul(class=" text-sm lg:text-base")=player 
+
+            div 
+                h2(class="text-sm lg:text-lg mb-2 text-center") Derniers matchs :    
+            //- p=team.captain
+            //- p.team-members= team.players
+
+    //- section(class="mt-48 splide" aria-label="Splid")
+        
+    //-     div(class="splide__track")
+    //-         ul(class="splide__list")
+                
+    //-             li(class="splide__slide")
+    //-                 div(class="bg-white opacity-80 border border-gray-200 mx-10 rounded-lg shadow hover:opacity-100 hover:shadow-lg")
+    //-                     h2(class="mt-2 pl-4 text-base lg:text-xl mb-4")= team.teamname
+    //-                     p(class="text-sm lg:text-lg mb-4 text-center") Capitaine : #{team.captain}
+    //-                     p(class="text-sm lg:text-lg mb-4 text-center") Joueurs : 
+    //-                     ul(class="text-sm lg:text-lg mb-4 text-center") 
+    //-                         each player in team.players
+    //-                             li= player
                                 
     
-    script.
-      document.addEventListener('DOMContentLoaded', function() {
-        const splide = new Splide('.splide',{
-            type : 'loop',
-            snap : false,
-            width : '100%',
-            perPage : 2,
-            speed : 1000,
-            rewindbyDrag : true,
-            padding: { left: '10%', right: '10%' },
-            pauseOnFocus : true,
-            keyboard : "global",
+    //- script.
+    //-   document.addEventListener('DOMContentLoaded', function() {
+    //-     const splide = new Splide('.splide',{
+    //-         type : 'loop',
+    //-         snap : false,
+    //-         width : '100%',
+    //-         perPage : 2,
+    //-         speed : 1000,
+    //-         rewindbyDrag : true,
+    //-         padding: { left: '10%', right: '10%' },
+    //-         pauseOnFocus : true,
+    //-         keyboard : "global",
             
             
             

@@ -6,10 +6,11 @@ const {
 } = require("../queries/team.queries");
 
 exports.showTeams = async (req, res, next) => {
-  const teams = await findTeam();
+  const teamId = req.params.teamId;
+  const team = await findOneTeam(teamId);
   res.render("teams", {
     userSession: req.user,
-    teams: teams,
+    team: team,
   });
 };
 

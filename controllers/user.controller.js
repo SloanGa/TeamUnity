@@ -2,6 +2,7 @@ const {
   updateTeam,
   findOneTeam,
   findTeam,
+  findTeamAndPullPlayers,
 } = require("../queries/team.queries");
 const User = require("../database/models/users.model");
 const { createUser, editUser, deleteUser } = require("../queries/user.queries");
@@ -20,8 +21,8 @@ exports.userCreate = async (req, res, next) => {
   try {
     const body = req.body;
     const user = await createUser(body);
-    const teamId = body.team;
-    await updateTeam(teamId, { players: user.username });
+    const nextTeamId = body.team;
+    await updateTeam(nextTeamId, { players: user.username });
     req.login(user, (err) => {
       if (err) {
         return next(err);
@@ -46,21 +47,22 @@ exports.userDelete = async (req, res, next) => {
   }
 };
 
-exports.userEdit = async (req, res) => {
+exports.userEdit = async (req, res, next) => {
   try {
     let team;
     let teamName;
     const body = req.body;
     const user = req.user;
-    const id = req.user.id;
+    const userId = req.user.id;
+    const currentTeamId = user.team.team_id;
 
-    let teamId = body.team;
-    if (teamId === "") {
-      teamId = user.team.team_id;
+    let nextTeamId = body.team;
+    if (nextTeamId === "") {
+      nextTeamId = user.team.team_id;
       teamName = user.team.teamname;
-      team = await findOneTeam(teamId);
+      team = await findOneTeam(nextTeamId);
     } else {
-      team = await findOneTeam(teamId);
+      team = await findOneTeam(nextTeamId);
       teamName = team.teamname;
     }
 
@@ -75,8 +77,9 @@ exports.userEdit = async (req, res) => {
     if (!username) {
       username = user.username;
     }
-    // await updateTeam(teamId, { players: user.username });
-    await editUser(id, username, teamId, teamName, password);
+    await findTeamAndPullPlayers(currentTeamId, user.username);
+    await updateTeam(nextTeamId, { players: user.username });
+    await editUser(userId, username, nextTeamId, teamName, password);
     res.redirect("/profil");
   } catch (e) {
     next(e);

@@ -4,12 +4,18 @@ exports.findTeam = async () => {
   return Team.find({}).sort({ teamname: 1 });
 };
 
+exports.findTeamAndPullPlayers = async (currentTeamId, username) => {
+  return Team.findByIdAndUpdate(currentTeamId, {
+    $pull: { players: username },
+  });
+};
+
 exports.findOneTeam = async (id) => {
   return Team.findOne({ _id: id });
 };
 
-exports.updateTeam = async (teamId, players) => {
-  return Team.findByIdAndUpdate(teamId, { $push: players });
+exports.updateTeam = async (nextTeamId, username) => {
+  return Team.findByIdAndUpdate(nextTeamId, { $push: username });
 };
 
 exports.upDateTeamsScore = async (team1Db, team2Db, score1, score2) => {

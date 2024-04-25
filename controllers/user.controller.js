@@ -39,8 +39,11 @@ exports.userCreate = async (req, res, next) => {
 
 exports.userDelete = async (req, res, next) => {
   try {
-    const id = req.user.id;
-    await deleteUser(id);
+    const user = req.user;
+    const currentTeamId = user.team.team_id;
+    const userId = req.user.id;
+    await findTeamAndPullPlayers(currentTeamId, user.username);
+    await deleteUser(userId);
     res.redirect("/");
   } catch (e) {
     next(e);

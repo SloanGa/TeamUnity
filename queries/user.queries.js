@@ -1,4 +1,3 @@
-const Team = require("../database/models/teams.model");
 const User = require("../database/models/users.model");
 const { findOneTeam } = require("./team.queries");
 

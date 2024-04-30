@@ -1,27 +1,21 @@
+const app = require("../app");
 const http = require("http");
 const https = require("https");
-const app = require("../app");
 const fs = require("fs");
-const path = require("path");
+const env = require(`../environment/${process.env.NODE_ENV}`);
 
-http
-  .createServer((req, res) => {
-    console.log("https server");
-    console.log(req.headers.host);
-    console.log(req.url);
-    res.writeHead(301, {
-      Location: `https://${req.headers.host}${req.url}`,
-    });
-    res.end();
-  })
-  .listen(80);
+const httpServer = http.createServer((req, res) => {
+  res.writeHead(301, {
+    Location: `https://${req.headers.host}${req.url}`,
+  });
+});
+httpServer.listen(80);
 
-const server = https.createServer(
+const httpsServer = https.createServer(
   {
-    key: fs.readFileSync(path.join(__dirname, "../ssl/key.pem")),
-    cert: fs.readFileSync(path.join(__dirname, "../ssl/cert.pem")),
+    key: fs.readFileSync(env.key),
+    cert: fs.readFileSync(env.cert),
   },
   app
 );
-
-server.listen(443);
+httpsServer.listen(443);

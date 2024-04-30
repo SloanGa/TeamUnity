@@ -1,5 +1,5 @@
 const passport = require("passport");
-const { app } = require("../app");
+const app = require("../app");
 const User = require("../database/models/users.model");
 const LocalStrategy = require("passport-local").Strategy;
 const { findUserPerEmail } = require("../queries/user.queries");

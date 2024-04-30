@@ -40,9 +40,7 @@ exports.postCreate = async (req, res, next) => {
 
 exports.postDelete = async (req, res, next) => {
   try {
-    console.log(req.params);
     const postId = req.params.postId;
-    console.log(postId);
     await deletePost(postId);
     res.redirect("/");
   } catch (e) {

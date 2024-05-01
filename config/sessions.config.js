@@ -2,13 +2,14 @@ const app = require("../app");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const { clientPromise } = require("../database");
+const env = require(`../environment/${process.env.NODE_ENV}`);
 require("dotenv").config();
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+    secret: env.sessionSecret,
     resave: false,
-    name: process.env.SESSION_NAME,
+    name: env.sessionName,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
@@ -16,8 +17,8 @@ app.use(
     },
     store: MongoStore.create({
       clientPromise: clientPromise,
-      mongoUrl: process.env.SERVE_MONGO,
-      dbName: process.env.DB_NAME,
+      mongoUrl: env.dbUrl,
+      dbName: env.dbName,
       ttl: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
     }),
   })

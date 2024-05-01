@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-mongoose
+exports.clientPromise = mongoose
   .connect(process.env.SERVE_MONGO)
   .then(() => {
     console.log("Connected to MongoDB");

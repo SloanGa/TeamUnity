@@ -11,7 +11,7 @@ const dateParser = () => {
   return newDate;
 };
 
-const hourParser = (str) => {
+const hourParser = () => {
   let newHour = new Date().toLocaleTimeString("fr-FR", {
     hour: "numeric",
     minute: "numeric",

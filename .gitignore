@@ -24,6 +24,5 @@ dist-ssr
 *.sln
 *.sw?
 mdp.mongo.txt
-uploads
 text.txt
 ssl

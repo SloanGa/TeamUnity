@@ -1,8 +1,8 @@
+const app = require("../app");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const app = require("../app");
+const { clientPromise } = require("../database");
 require("dotenv").config();
-require("../database");
 
 app.use(
   session({
@@ -15,6 +15,7 @@ app.use(
       maxAge: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
     },
     store: MongoStore.create({
+      clientPromise: clientPromise,
       mongoUrl: process.env.SERVE_MONGO,
       dbName: process.env.DB_NAME,
       ttl: 3 * 60 * 60 * 1000, // 3 hours in milliseconds

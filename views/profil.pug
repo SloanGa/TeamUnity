@@ -25,7 +25,11 @@ block content
                     li 
                     a.block.px-4.py-2.mb-2.text-sm.text-gray-700(class='hover:bg-gray-200 duration-100 lg:text-base cursor-pointer' id="addScore") Ajouter le score d'un match    
 
-                
+            .flex.flex-col.items-center.px-4.text-center
+                if currentUser.local.emailVerified
+                    span Verified 
+                else 
+                    span Not Verified
     else                      
         div(class='mt-48 w-6/12 m-auto font-nav1' id="profil").bg-gray-300.border.border-gray-200.rounded-lg.shadow
             
@@ -45,6 +49,12 @@ block content
                     a.block.px-4.py-2.text-sm.text-gray-700(class='hover:bg-gray-200 duration-100 lg:text-base cursor-pointer' id='editProfil') Mofidier vos informations
                     li
                     a.block.px-4.py-2.text-sm.text-red-600(class='hover:bg-gray-200 duration-100 lg:text-base cursor-pointer' id='deleteProfil') Supprimer votre compte
+                    
+            .flex.flex-col.items-center.px-4.text-center
+                if currentUser.local.emailVerified
+                    span Verified 
+                else 
+                    span Not Verified
 
     include modals/modal.edit.pug
     include modals/modal.delete.profil.pug

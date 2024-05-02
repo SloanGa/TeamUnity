@@ -8,4 +8,5 @@ module.exports = {
   sessionSecret: "fil4533",
   cert: "/etc/letsencrypt/live/www.teamunity.site/fullchain.pem",
   key: "/etc/letsencrypt/live/www.teamunity.site/privkey.pem",
+  APIKeys: "a6b4300799f6d8a059a981da1c9459553fd743ac",
 };

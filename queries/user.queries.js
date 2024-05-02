@@ -1,5 +1,6 @@
 const User = require("../database/models/users.model");
 const { findOneTeam } = require("./team.queries");
+const { v4: uuidv4 } = require("uuid");
 
 exports.createUser = async (body) => {
   try {
@@ -13,6 +14,7 @@ exports.createUser = async (body) => {
       local: {
         email: body.email,
         password: hashedPassword,
+        emailToken: uuidv4(),
       },
       team: {
         team_id: teamId,
@@ -44,6 +46,10 @@ exports.editUser = async (id, username, teamId, teamName, password) => {
 
 exports.findUserPerEmail = async (email) => {
   return User.findOne({ "local.email": email });
+};
+
+exports.findUserPerId = async (id) => {
+  return User.findOne({ _id: id });
 };
 
 exports.findUsers = async () => {

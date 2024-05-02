@@ -7,6 +7,7 @@ exports.showProfil = async (req, res, next) => {
     const teams = await findTeam();
     const admin = isAdmin(req);
     res.render("profil", {
+      currentUser: req.user,
       currentPath: "/profil",
       userSession: req.user,
       teams: teams,

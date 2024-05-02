@@ -5,8 +5,14 @@ const {
   findTeamAndPullPlayers,
 } = require("../queries/team.queries");
 const User = require("../database/models/users.model");
-const { createUser, editUser, deleteUser } = require("../queries/user.queries");
+const {
+  createUser,
+  editUser,
+  deleteUser,
+  findUserPerId,
+} = require("../queries/user.queries");
 require("passport");
+const email = require("../emails/index");
 
 exports.signup = async (req, res, next) => {
   try {
@@ -23,6 +29,13 @@ exports.userCreate = async (req, res, next) => {
     const user = await createUser(body);
     const nextTeamId = body.team;
     await updateTeam(nextTeamId, { players: user.username });
+    email.sendEmailVerification({
+      to: user.local.email,
+      host: req.headers.host,
+      username: user.username,
+      userId: user._id,
+      token: user.local.emailToken,
+    });
     req.login(user, (err) => {
       if (err) {
         return next(err);
@@ -84,6 +97,23 @@ exports.userEdit = async (req, res, next) => {
     await updateTeam(nextTeamId, { players: user.username });
     await editUser(userId, username, nextTeamId, teamName, password);
     res.redirect("/profil");
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.emailVerification = async (req, res, next) => {
+  try {
+    const { userId, token } = req.params;
+    const user = await findUserPerId(userId);
+
+    if (user && token && token === user.local.emailToken) {
+      user.local.emailVerified = true;
+      await user.save();
+      res.redirect("/");
+    } else {
+      return res.status(400).json("Problem during email verification");
+    }
   } catch (e) {
     next(e);
   }

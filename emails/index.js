@@ -40,7 +40,25 @@ class Email {
         ),
       };
       const response = await this.transporter.sendMail(email);
-      console.log(response);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async sendResetPasswordLink(options) {
+    try {
+      const email = {
+        from: this.from,
+        subject: "Reinitialiser votre mot de passe",
+        to: options.to,
+        html: pug.renderFile(
+          path.join(__dirname, "/templates/reset-password.pug"),
+          {
+            url: `https://${options.host}/users/reset-password/${options.userId}/${options.token}`,
+          }
+        ),
+      };
+      const response = await this.transporter.sendMail(email);
     } catch (e) {
       throw e;
     }

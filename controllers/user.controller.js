@@ -10,9 +10,12 @@ const {
   editUser,
   deleteUser,
   findUserPerId,
+  findUserPerEmail,
 } = require("../queries/user.queries");
 require("passport");
-const email = require("../emails/index");
+const { v4: uuidv4 } = require("uuid");
+const emailFactory = require("../emails/index");
+const moment = require("moment");
 
 exports.signup = async (req, res, next) => {
   try {
@@ -29,7 +32,7 @@ exports.userCreate = async (req, res, next) => {
     const user = await createUser(body);
     const nextTeamId = body.team;
     await updateTeam(nextTeamId, { players: user.username });
-    email.sendEmailVerification({
+    emailFactory.sendEmailVerification({
       to: user.local.email,
       host: req.headers.host,
       username: user.username,
@@ -114,6 +117,30 @@ exports.emailVerification = async (req, res, next) => {
     } else {
       return res.status(400).json("Problem during email verification");
     }
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.initResetPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+    if (email) {
+      const user = await findUserPerEmail(email);
+      if (user) {
+        user.local.passwordToken = uuidv4();
+        user.local.passwordTokenExpiration = moment().add(2, "hours").toDate();
+        await user.save();
+        emailFactory.sendResetPasswordLink({
+          to: email,
+          host: req.headers.host,
+          userId: user._id,
+          token: user.local.passwordToken,
+        });
+        return res.status(200).end();
+      }
+    }
+    return res.status(400).json("Utilisateur inconnu");
   } catch (e) {
     next(e);
   }

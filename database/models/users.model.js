@@ -11,6 +11,8 @@ const userSchema = schema({
     emailVerified: { type: Boolean, default: false },
     emailToken: { type: String },
     password: { type: String, required: true },
+    passwordToken: { type: String },
+    passwordTokenExpiration: { type: Date },
   },
   avatar: { type: String, default: "/img/avatar.png" },
   team: {

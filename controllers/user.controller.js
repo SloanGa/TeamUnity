@@ -145,3 +145,49 @@ exports.initResetPassword = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.resetPasswordForm = async (req, res, next) => {
+  try {
+    const { userId, token } = req.params;
+    const user = await findUserPerId(userId);
+    if (user && user.local.passwordToken === token) {
+      res.render("resetPasswordForm"),
+        {
+          url: `https://${req.headers.host}/users/reset-password/${user._id}/${user.local.passwordToken}`,
+          error: null,
+        };
+    } else {
+      return res.status(400).json("Utilisateur introuvable");
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.resetPassword = async (req, res, next) => {
+  try {
+    const { userId, token } = req.params;
+    const { password } = req.body;
+    const user = await findUserPerId(userId);
+    if (
+      password &&
+      user &&
+      user.local.passwordToken === token &&
+      moment() < moment(user.local.passwordTokenExpiration)
+    ) {
+      user.local.password = await User.hashPassword(password);
+      user.local.passwordToken = null;
+      user.local.passwordTokenExpiration = null;
+      await user.save();
+      return res.redirect("/");
+    } else {
+      res.render("resetPasswordForm"),
+        {
+          url: `https://${req.headers.host}/users/reset-password/${user._id}/${user.local.passwordToken}`,
+          error: ["Une erreur s'est produite"],
+        };
+    }
+  } catch (e) {
+    next(e);
+  }
+};

@@ -5,3 +5,5 @@
 //     console.log(e.target);
 //   });
 // });
+
+console.log("Je suis dans le navigateur");

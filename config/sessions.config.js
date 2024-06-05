@@ -2,7 +2,7 @@ const app = require("../app");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const { clientPromise } = require("../database");
-const env = require(`../environment/${process.env.NODE_ENV}`);
+const env = require(`../environment_st/${process.env.NODE_ENV}`);
 require("dotenv").config();
 
 app.use(

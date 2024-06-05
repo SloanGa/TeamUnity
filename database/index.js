@@ -1,6 +1,6 @@
 console.log("Database connection");
 const mongoose = require("mongoose");
-const env = require(`../environment/${process.env.NODE_ENV}`);
+const env = require(`../environment_st/${process.env.NODE_ENV}`);
 console.log("connnecting to", env.dbUrl);
 
 exports.clientPromise = mongoose

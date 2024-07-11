@@ -32,10 +32,14 @@ passport.use(
           if (match) {
             done(null, user);
           } else {
-            done(null, false, { message: "Mot de passe incorrect" });
+            done(null, false, {
+              message: "Utilisateur ou mot de passe incorrect",
+            });
           }
         } else {
-          done(null, false, { message: "Utilisateur incorrect" });
+          done(null, false, {
+            message: "Utilisateur ou mot de passe incorrect",
+          });
         }
       } catch (e) {
         done(e);

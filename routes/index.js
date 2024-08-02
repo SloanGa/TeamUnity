@@ -31,7 +31,6 @@ router.get("/", async (req, res) => {
       image: image,
       currentPath: "/",
     });
-    console.log("Bonjour");
   } catch (e) {
     console.log(e);
   }
